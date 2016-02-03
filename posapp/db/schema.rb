@@ -17,9 +17,12 @@ ActiveRecord::Schema.define(version: 20160203104321) do
     t.string   "name"
     t.string   "api_key"
     t.string   "about"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "applications", ["user_id"], name: "index_applications_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

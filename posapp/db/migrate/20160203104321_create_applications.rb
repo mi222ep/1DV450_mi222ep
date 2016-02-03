@@ -4,6 +4,7 @@ class CreateApplications < ActiveRecord::Migration
       t.string :name
       t.string :api_key
       t.string :about
+      t.belongs_to :user, index: true
       t.timestamps
     end
   end
