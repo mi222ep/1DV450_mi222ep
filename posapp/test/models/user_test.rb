@@ -8,6 +8,12 @@ class UserTest < ActiveSupport::TestCase
     u = User.new
     u.name = "testuser"
     u.password = "123456"
-    u.save
+    assert u.save
+  end
+  test "Dont save without name"do
+    u = User.new
+    u.name = ""
+    u.password ="123456"
+    assert_not u.save
   end
 end
