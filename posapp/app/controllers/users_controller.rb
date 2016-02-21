@@ -4,4 +4,7 @@ class UsersController < ApplicationController
     @users = User.all
     render :json => @users
   end
+  def new
+
+  end
 end

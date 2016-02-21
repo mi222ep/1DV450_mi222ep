@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20160203104321) do
   add_index "applications", ["user_id"], name: "index_applications_on_user_id"
 
   create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "password"
+    t.string   "name",            null: false
+    t.string   "password_digest", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
