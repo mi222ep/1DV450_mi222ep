@@ -5,13 +5,14 @@ class UsersController < ApplicationController
     render :json => @users
   end
   def new
-    @user = User.new
+    #@user = User.new
   end
   def register
       @user = User.new(user_params)
 
       if @user.save
         session[:userid] = @user.id
+        redirect_to login_path
       else
         render :action => new
       end
@@ -19,10 +20,10 @@ class UsersController < ApplicationController
     #If not, try to register
     #If register fails, return error message
     #Skicka med param username
-    redirect_to login_path
+
   end
   private
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :password, :password_confirmation)
   end
 end
