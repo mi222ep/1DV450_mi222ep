@@ -7,4 +7,8 @@ class UsersController < ApplicationController
   def new
 
   end
+  def register
+    #Skicka med param username
+    redirect_to login_path
+  end
 end
