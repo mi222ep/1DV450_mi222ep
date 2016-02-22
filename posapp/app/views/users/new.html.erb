@@ -1,3 +1,13 @@
+<% if @user.errors.any? %>
+    <div id="error_messages">
+      <h2>Errors:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end%>
+            </ul>
+    </div>
+    <% end%>
 <%=content_for :title do%>
     New user
 <% end %>
@@ -16,5 +26,4 @@
       <br />
       <%= f.submit "Create user", class: "btn btn-primary" %>
   <% end %>
-
 </div>

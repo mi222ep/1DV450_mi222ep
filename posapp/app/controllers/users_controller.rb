@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     render :json => @users
   end
   def new
-    #@user = User.new
+    @user = User.new
   end
   def register
       @user = User.new(user_params)
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         session[:userid] = @user.id
         redirect_to login_path
       else
-        render :action => new
+        render :action => "new"
       end
     #Check if email is in use
     #If not, try to register
