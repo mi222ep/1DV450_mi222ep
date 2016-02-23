@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       # call helper method log_in (se helpers/seesionhelper)
       log_in @user
       # Log the user in and redirect to the page with all teams (/teams)
-      #redirect_to teams_path
+      redirect_to apikeys_path
     else
       # Create an error message.
       #flash.now is for rendering (lives for the cycle)
