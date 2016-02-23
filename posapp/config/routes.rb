@@ -12,4 +12,7 @@ Rails.application.routes.draw do
 
   get '/logout' => 'sessions#destroy'
   get '/delete' => 'apikeys#delete'
+
+  get'/apikeys/:id/delete' =>  'apikeys#delete'
+
 end
