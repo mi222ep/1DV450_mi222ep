@@ -32,6 +32,7 @@ class SessionsController < ApplicationController
   def destroy
     log_out # called in sessionhelper
     # flash (without .now) lives for a redirect
+
     flash[:info] = "Tnx for the visit, welcome back!"
     redirect_to login_path
   end

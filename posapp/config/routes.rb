@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   get '/showallkeys' => 'apikeys#show', as: :keys
 
   get '/logout' => 'sessions#destroy'
-  get '/delete' => 'apikeys#delete'
 
   get'/apikeys/:id/delete' =>  'apikeys#delete'
 
+  get '/admin' => 'admin#show'
+  delete '/admin/:id/delete' => 'admin#delete'
 end
