@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   get '/apikeys' => 'apikeys#new'
   post '/apikeys' => 'apikeys#create'
+
+  get '/showallkeys' => 'apikeys#show', as: :keys
 end
