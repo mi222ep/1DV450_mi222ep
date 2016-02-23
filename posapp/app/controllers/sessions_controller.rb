@@ -6,13 +6,13 @@ class SessionsController < ApplicationController
   # called when a login attempt is made
   def create
     # Getting the user by mail
-    user = User.find_by(name: params[:session][:email])
+    @user = User.find_by(name: params[:name])
 
     # check if we got a user first and then the password is correct
-    if user && user.authenticate(params[:session][:password])
+    if @user && @user.authenticate(params[:password])
 
       # call helper method log_in (se helpers/seesionhelper)
-      log_in user
+      log_in @user
       # Log the user in and redirect to the page with all teams (/teams)
       #redirect_to teams_path
     else
@@ -44,5 +44,8 @@ class SessionsController < ApplicationController
     else
       render json: { error: 'Invalid username or password' }, status: :unauthorized
     end
+  end
+  def logout
+
   end
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'logout' => 'sessions#logout', as: :logout
   get 'register' => 'users#new'
   post 'register' => 'users#register'
   get 'users/' => 'users#index'
