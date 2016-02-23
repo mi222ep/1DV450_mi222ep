@@ -5,8 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(name: "john_Snow", password_digest: "4thewall")
-User.create(name: "albin", password_digest: "123456")
+
+User.create(name: "john_Snow", password: "4thewall", password_confirmation: "4thewall")
+User.create(name: "albin", password: "123456", password_confirmation: "123456")
 
 a = Apikey.create(name:"test1", api_key:"123abc",about:"About example application")
 User.find(1).applications << a
