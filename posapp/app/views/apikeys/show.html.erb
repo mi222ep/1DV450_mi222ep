@@ -3,6 +3,9 @@
   <h3>Api keys</h3>
   <p>Here are all your applications and api keys</p>
 </div>
+<% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
 <div class="row">
 <% @apikey.each do |apikey|%>
       <div class="col-sm-6 col-md-4">
@@ -10,7 +13,7 @@
         <p><%= apikey.about%></p>
         Your apikey: <p><em><%= apikey.api_key%></em></p>
         <a href="#">Edit</a>
-        <a href="#">Delete</a>
+        <a href="/delete">Delete</a>
       </div>
 <% end%>
 </div>
