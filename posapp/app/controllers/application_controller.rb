@@ -16,4 +16,10 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+  def require_admin_access
+
+    if @current_user.id == 1
+      flash[:info] = "Logged in as admin"
+    end
+  end
 end
