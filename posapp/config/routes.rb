@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'logout' => 'sessions#logout', as: :logout
   get 'register' => 'users#new'
   post 'register' => 'users#register'
   get 'users/' => 'users#index'
@@ -10,4 +9,6 @@ Rails.application.routes.draw do
   post '/apikeys' => 'apikeys#create'
 
   get '/showallkeys' => 'apikeys#show', as: :keys
+
+  get '/logout' => 'sessions#destroy'
 end

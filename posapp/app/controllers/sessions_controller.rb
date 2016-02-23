@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       # call helper method log_in (se helpers/seesionhelper)
       log_in @user
       # Log the user in and redirect to the page with all teams (/teams)
-      redirect_to apikeys_path
+      redirect_to keys_path
     else
       # Create an error message.
       #flash.now is for rendering (lives for the cycle)
@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
     log_out # called in sessionhelper
     # flash (without .now) lives for a redirect
     flash[:info] = "Tnx for the visit, welcome back!"
-    #redirect_to root_url # go back
+    redirect_to login_path
   end
 
   ## This is called from a client who wish to authenticate and get a JSON Web Token back

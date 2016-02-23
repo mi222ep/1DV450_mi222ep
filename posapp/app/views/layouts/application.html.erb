@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="page-header"><h1>1dv450 - Webbramverk</h1></div>
+<div class="page-header"><h1>1dv450 - Webbramverk</h1><% if @current_user %>Logged in as <%= @current_user.name%><a href="/logout">Log out</a> <% else%> Inte inloggad<%end%></div>
 <div class="container">
 <%= yield %>
 </div>
