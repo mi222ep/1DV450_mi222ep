@@ -1,3 +1,16 @@
+
+<div class="jumbotron">
+  <h3>Api keys</h3>
+  <p>Here are all your applications and api keys</p>
+</div>
+<div class="row">
 <% @apikey.each do |apikey|%>
-    <p><%= apikey.name%></p>
+      <div class="col-sm-6 col-md-4">
+    <h3><%= apikey.name%></h3>
+        <p><%= apikey.about%></p>
+        Your apikey: <p><em><%= apikey.api_key%></em></p>
+        <a href="#">Edit</a>
+        <a href="#">Delete</a>
+      </div>
 <% end%>
+</div>
