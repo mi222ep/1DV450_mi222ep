@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
   def new
-    # loads the login-form from the view sessions/new.html.erb
+  if is_logged_in?
+    redirect_to keys_path
+  end
   end
 
   # called when a login attempt is made
