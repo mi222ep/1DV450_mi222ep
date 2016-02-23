@@ -8,14 +8,14 @@
 User.create(name: "john_Snow", password_digest: "4thewall")
 User.create(name: "albin", password_digest: "123456")
 
-a = Application.create(name:"test1", api_key:"123abc",about:"About example application")
+a = Apikey.create(name:"test1", api_key:"123abc",about:"About example application")
 User.find(1).applications << a
 
-a = Application.create(name:"test2", api_key:"123abc",about:"About example application")
+a = Apikey.create(name:"test2", api_key:"123abc",about:"About example application")
 User.find(1).applications << a
 
-a = Application.create(name:"test3", api_key:"123abc",about:"About example application")
+a = Apikey.create(name:"test3", api_key:"123abc",about:"About example application")
 User.find(1).applications << a
 
-a = Application.create(name:"test4", api_key:"123abc",about:"About example application")
+a = Apikey.create(name:"test4", api_key:"123abc",about:"About example application")
 User.find(2).applications << a
