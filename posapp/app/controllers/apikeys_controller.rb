@@ -8,7 +8,6 @@ class ApikeysController < ApplicationController
     @apikey = Apikey.new
   end
   def create
-    @apikey = Apikey.new(apikeys_params)
     random_string = SecureRandom.uuid
     @apikey.api_key = random_string
     @apikey.user_id = @current_user.id
