@@ -9,7 +9,8 @@ class ApikeysController < ApplicationController
   end
   def create
     @apikey = Apikey.new(apikeys_params)
-    @apikey.api_key = "123gkdflöbkpoer93fsf332ssksldös"
+    random_string = SecureRandom.uuid
+    @apikey.api_key = random_string
     @apikey.user_id = @current_user.id
     if @apikey.save
       redirect_to keys_path
