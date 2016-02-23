@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203104321) do
+ActiveRecord::Schema.define(version: 20160223144854) do
 
-  create_table "applications", force: true do |t|
+  create_table "apikeys", force: true do |t|
     t.string   "name"
     t.string   "api_key"
     t.string   "about"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20160203104321) do
     t.datetime "updated_at"
   end
 
-  add_index "applications", ["user_id"], name: "index_applications_on_user_id"
+  add_index "apikeys", ["user_id"], name: "index_apikeys_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name",            null: false
