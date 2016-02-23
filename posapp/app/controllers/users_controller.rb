@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
 
       if @user.save
+        flash[:info] = "Registration sucessful, you can now log in"
         redirect_to login_path
       else
         render :action => "new"
