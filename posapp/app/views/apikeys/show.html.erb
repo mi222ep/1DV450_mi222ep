@@ -14,7 +14,7 @@
         <p><%= apikey.about%></p>
         Your apikey: <p><em><%= apikey.api_key%></em></p>
         <a href="#">Edit</a>
-        <a href="/apikeys/<%= apikey.id%>/delete">Delete</a>
+        <a href="/apikeys/<%= apikey.id%>/delete" data-confirm="Are you sure?" data-method="delete">Delete</a>
       </div>
 <% end%>
 </div>
