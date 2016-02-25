@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
 
   def require_admin_access
     if @current_user.id != 1
+      flash[:info] = "You're not an admin"
      redirect_to keys_path
     end
   end
