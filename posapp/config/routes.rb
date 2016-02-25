@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'register' => 'users#new'
   post 'register' => 'users#register'
   get 'users/' => 'users#index'
+
   get '/login' => 'sessions#new', as: :login
   post '/login' => 'sessions#create'
 

@@ -1,13 +1,11 @@
 class Apikey < ActiveRecord::Base
     validates :name,
               :presence => {:message =>"Name can't be empty"},
-              :length => {:minimum =>6, :message => "Username must be at least 6 keys" },
-              :length => {:maximum => 20, :message => "Username cannot be longer than 20 characters"}
+              :length => {:minimum =>6, :maximum => 20, :message => "Name must be between 6 and 20 characters long"}
 
     validates :about,
               :presence => {:message =>"About can't be empty"},
-              :length => {:minimum =>6, :message => "About must be at least 6 keys" },
-              :length => {:maximum => 200, :message => "Username cannot be longer than 200 characters"}
+              :length => {:minimum =>6, :maximum => 200, :message => "About must be between 6 and 200 charachers long"}
 
   belongs_to :user
 
