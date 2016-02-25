@@ -27,7 +27,7 @@ class ApikeysController < ApplicationController
     if Apikey.exists?(params[:id])
     if Apikey.find(params[:id]).user_id == @current_user.id
       Apikey.find(params[:id]).delete
-      flash[:info] ="Deleted"
+      flash[:info] ="Application deleted"
     else
       flash[:info] ="You cannot delete someone elses application"
     end

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
+  get "/" => 'sessions#new', as: :login
+  post "/" => "sessions#create"
+
   get 'register' => 'users#new'
   post 'register' => 'users#register'
   get 'users/' => 'users#index'
-
-  get '/login' => 'sessions#new', as: :login
-  post '/login' => 'sessions#create'
 
   get '/apikeys' => 'apikeys#new'
   post '/apikeys' => 'apikeys#create'
