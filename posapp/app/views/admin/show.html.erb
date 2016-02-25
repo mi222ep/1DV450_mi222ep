@@ -1,7 +1,6 @@
 <div class="jumbotron">
-  <h3>Api keys</h3>
-  <p>Here are all your applications and api keys</p>
-  <p><a href="/apikeys">Add new application</a></p>
+  <h3>Admin panel</h3>
+  <p>Here are all the applications and api keys</p>
 </div>
 <% flash.each do |message_type, message| %>
     <div class="alert alert-<%= message_type %>"><%= message %></div>
@@ -13,7 +12,7 @@
         <p><%= apikey.about%></p>
         Your apikey: <p><em><%= apikey.api_key%></em></p>
         <a href="#">Edit</a>
-        <a href="/admin/<%= apikey.id%>>/delete" data-confirm="Are you sure?" data-method="delete">Ta bort </a>
+        <a href="/admin/<%= apikey.id%>>/delete" data-confirm="Are you sure?" data-method="delete">Revoke</a>
       </div>
   <% end%>
 </div>
