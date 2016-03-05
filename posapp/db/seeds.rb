@@ -10,13 +10,13 @@ User.create(name: "john_Snow", password: "4thewall", password_confirmation: "4th
 User.create(name: "albin", password: "123456", password_confirmation: "123456")
 
 a = Apikey.create(name:"test1", api_key:"123abc",about:"About example application")
-User.find(1).applications << a
+User.find(1).apikeys << a
 
 a = Apikey.create(name:"test2", api_key:"123abc",about:"About example application")
-User.find(1).applications << a
+User.find(1).apikeys << a
 
 a = Apikey.create(name:"test3", api_key:"123abc",about:"About example application")
-User.find(1).applications << a
+User.find(1).apikeys << a
 
 a = Apikey.create(name:"test4", api_key:"123abc",about:"About example application")
-User.find(2).applications << a
+User.find(2).apikeys << a
