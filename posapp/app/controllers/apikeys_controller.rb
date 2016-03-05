@@ -25,14 +25,14 @@ class ApikeysController < ApplicationController
 
   def delete
     if Apikey.exists?(params[:id])
-    if Apikey.find(params[:id]).user_id == @current_user.id
-      Apikey.find(params[:id]).delete
-      flash[:info] ="Application deleted"
-    else
-      flash[:info] ="You cannot delete someone elses application"
-    end
-    else
-      flash[:info] ="That application does not seem to exist"
+      if Apikey.find(params[:id]).user_id == @current_user.id
+        Apikey.find(params[:id]).delete
+        flash[:info] ="Application deleted"
+      else
+        flash[:info] ="You cannot delete someone elses application"
+      end
+      else
+        flash[:info] ="That application does not seem to exist"
     end
     redirect_to keys_path
   end
