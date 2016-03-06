@@ -17,6 +17,3 @@ User.find(1).apikeys << a
 
 a = Apikey.create(name:"test3", api_key:"123abc",about:"About example application")
 User.find(1).apikeys << a
-
-a = Apikey.create(name:"test4", api_key:"123abc",about:"About example application")
-User.find(2).apikeys << a
