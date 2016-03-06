@@ -17,4 +17,5 @@ Rails.application.routes.draw do
 
   get '/admin' => 'admin#show'
   delete '/admin/:id/delete' => 'admin#delete'
+
 end
