@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.select('events.name, longitude, creators.name AS "Creator name"').joins(:position, :creator).all
+    @events = Event.select('events.name, about, longitude, latitude, creators.name AS "created-by"').joins(:position, :creator).order(name: :asc).all
     render :json => @events
   end
 
