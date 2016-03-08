@@ -19,8 +19,10 @@ Rails.application.routes.draw do
   delete '/admin/:id/delete' => 'admin#delete'
 
   get '/authenticate' => 'sessions#authenticate'
+
   get '/auth/twitter/callback' => 'sessions#create_for_api'
 
+  get '/events' => 'events#index'
 
 
 end
