@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
   def create_for_api
     auth = request.env["omniauth.auth"]
 
-    user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth["provider"], auth["uid"])
+    user = Creator.find_by_provider_and_uid(auth["provider"], auth["uid"]) || Creator.create_with_omniauth(auth["provider"], auth["uid"])
 
     user.name = auth["info"]["name"] # could be updated (better check when new logins)
     user.token = auth["credentials"]["token"] # github provider token should not give out
