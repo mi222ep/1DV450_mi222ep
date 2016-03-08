@@ -24,5 +24,6 @@ Rails.application.routes.draw do
 
   get '/events' => 'events#index'
 
+  get '/events/:eventID' =>'events#get_single_event'
 
 end

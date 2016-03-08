@@ -4,5 +4,9 @@ class EventsController < ApplicationController
     @events = Event.select('events.name, about, longitude, event_time, latitude, creators.name AS "created-by"').joins(:position, :creator).order(event_time: :asc).all
     render :json => @events
   end
+  def get_single_event
+    @event = Event.find_by_id(params['eventID'])
+    render :json =>@event
+  end
 
 end
