@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160229145406) do
   create_table "events", force: true do |t|
     t.string   "name"
     t.string   "about"
+    t.datetime "event_time"
     t.integer  "creator_id"
     t.integer  "position_id"
     t.datetime "created_at"
@@ -55,8 +56,8 @@ ActiveRecord::Schema.define(version: 20160229145406) do
   add_index "events_tags", ["event_id", "tag_id"], name: "index_events_tags_on_event_id_and_tag_id"
 
   create_table "positions", force: true do |t|
-    t.integer  "longitude"
-    t.integer  "latitude"
+    t.string   "longitude"
+    t.string   "latitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
