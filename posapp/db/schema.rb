@@ -25,8 +25,14 @@ ActiveRecord::Schema.define(version: 20160229145406) do
   add_index "apikeys", ["user_id"], name: "index_apikeys_on_user_id"
 
   create_table "creators", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "token"
+    t.string   "auth_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "token_expires"
   end
 
   create_table "events", force: true do |t|

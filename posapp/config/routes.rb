@@ -18,4 +18,9 @@ Rails.application.routes.draw do
   get '/admin' => 'admin#show'
   delete '/admin/:id/delete' => 'admin#delete'
 
+  get '/authenticate' => 'sessions#authenticate'
+  get '/auth/twitter/callback' => 'sessions#create_for_api'
+
+
+
 end
