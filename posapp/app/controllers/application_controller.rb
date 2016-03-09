@@ -27,4 +27,10 @@ class ApplicationController < ActionController::Base
      redirect_to keys_path
     end
   end
+  def require_valid_apikey
+    if Apikey.find_by_api_key(params['apikey'])
+    else
+      redirect_to api_not_valid_key_path
+    end
+  end
 end

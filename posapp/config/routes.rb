@@ -28,4 +28,6 @@ Rails.application.routes.draw do
 
   get '/events/offset=:offset/limit=:limit' => 'events#get_offset_and_limit'
 
+  get '/notvalidapikey' => 'message#not_valid_key', as: :api_not_valid_key
+
 end
