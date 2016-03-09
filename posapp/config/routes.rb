@@ -22,12 +22,12 @@ Rails.application.routes.draw do
 
   get '/auth/twitter/callback' => 'sessions#create_for_api'
 
-  get '/events' => 'events#index'
+  get '/apikey=:apikey/events' => 'events#index'
 
-  get '/events/:eventID' =>'events#get_single_event'
+  get '/apikey=:apikey/events/:eventID' =>'events#get_single_event'
 
-  get '/events/offset=:offset/limit=:limit' => 'events#get_offset_and_limit'
+  get '/apikey=:apikey/events/offset=:offset/limit=:limit' => 'events#get_offset_and_limit'
 
-  get '/notvalidapikey' => 'message#not_valid_key', as: :api_not_valid_key
+  get '/apikey=:apikey/notvalidapikey' => 'message#not_valid_key', as: :api_not_valid_key
 
 end
