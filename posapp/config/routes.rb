@@ -26,4 +26,6 @@ Rails.application.routes.draw do
 
   get '/events/:eventID' =>'events#get_single_event'
 
+  get '/events/offset=:offset/limit=:limit' => 'events#get_offset_and_limit'
+
 end

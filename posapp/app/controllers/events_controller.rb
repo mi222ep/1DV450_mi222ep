@@ -8,5 +8,9 @@ class EventsController < ApplicationController
     @event = Event.find_by_id(params['eventID'])
     render :json =>@event
   end
+  def get_offset_and_limit
+    @event =Event.select('events.name, about, longitude, event_time, latitude, creators.name AS "created-by"').joins(:position, :creator).order(event_time: :asc).all
+    render :json =>@event.limit(params['limit']).offset(params['offset'])
+  end
 
 end
