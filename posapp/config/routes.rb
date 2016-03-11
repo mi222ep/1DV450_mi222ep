@@ -32,4 +32,8 @@ Rails.application.routes.draw do
 
   post'/apikey=:apikey/events' => 'events#new_event'
 
+  put 'apikey=:apikey/events/:eventID' => 'events#put_event'
+
+  delete 'apikey=:apikey/events/:eventID' => 'events#delete_event'
+
 end

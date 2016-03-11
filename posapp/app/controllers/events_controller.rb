@@ -37,8 +37,17 @@ class EventsController < ApplicationController
 
     #TODO, assign creator id according to who is logged in with twitter
 
-    @event.creator_id = 2;
+    @event.creator_id = 2
     @event.save
+  end
+  def put_event
+    @event = Event.find(params["eventID"])
+    @event.update(name: params["name"], about: params["about"], creator_id: params["creator_id"], position_id: params["position_id"], event_time: params["event_time"]);
+    render json: @event
+  end
+  def delete_event
+    @event = Event.find(params["eventID"]).destroy
+    render json: @event
   end
   def event_params
     params.permit(:name, :about, :event_time, :position_id)
