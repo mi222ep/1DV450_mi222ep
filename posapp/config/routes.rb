@@ -30,4 +30,6 @@ Rails.application.routes.draw do
 
   get '/apikey=:apikey/notvalidapikey' => 'message#not_valid_key', as: :api_not_valid_key
 
+  post'/apikey=:apikey/events' => 'events#new_event'
+
 end

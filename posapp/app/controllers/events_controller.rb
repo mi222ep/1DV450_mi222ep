@@ -1,6 +1,9 @@
 class EventsController < ApplicationController
 
+  protect_from_forgery
+  skip_before_action :verify_authenticity_token
   before_action :require_valid_apikey
+
   def index
     @events = Event.select('events.name, about, longitude, event_time, latitude, creators.name AS "created-by"').joins(:position, :creator).order(event_time: :asc).all
     render :json => @events
@@ -27,6 +30,18 @@ class EventsController < ApplicationController
   end
   def api_footer
     return "footer: api-footer"
+  end
+  def new_event
+    render json: params
+    @event = Event.new(event_params)
+
+    #TODO, assign creator id according to who is logged in with twitter
+
+    @event.creator_id = 2;
+    @event.save
+  end
+  def event_params
+    params.permit(:name, :about, :event_time, :position_id)
   end
 
 end
