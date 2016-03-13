@@ -28,7 +28,8 @@ class ApplicationController < ActionController::Base
     end
   end
   def require_valid_apikey
-    if Apikey.find_by_api_key(params['apikey'])
+    apikey = request.headers["apikey"] || nil
+    if Apikey.find_by_api_key(apikey)
     else
       redirect_to api_not_valid_key_path
     end
@@ -39,7 +40,6 @@ class ApplicationController < ActionController::Base
     unless auth_token.nil?
       #TODO: Test against token expiration date also
       creator = Creator.find_by_auth_token(auth_token) || nil
-      return creator
     end
   end
 end

@@ -70,6 +70,7 @@ class EventsController < ApplicationController
       #TODO: Set response.status
       render :json => "Cannot delete that event"
     else
+      @event.delete
       render json: @event
     end
       end
