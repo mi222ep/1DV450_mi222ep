@@ -6,6 +6,8 @@ class Apikey < ActiveRecord::Base
     validates :about,
               :presence => {:message =>"About can't be empty"},
               :length => {:minimum =>6, :maximum => 200, :message => "About must be between 6 and 200 charachers long"}
+    validates :api_key,
+              :uniqueness => true
 
   belongs_to :user
 
