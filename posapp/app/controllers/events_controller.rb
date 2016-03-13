@@ -13,7 +13,6 @@ class EventsController < ApplicationController
     toClient = []
     toClient.push("posapp" =>api_header)
     toClient.push("data" =>@event)
-    #@a.push("footer" => api_footer)
     render :json =>toClient
   end
 
