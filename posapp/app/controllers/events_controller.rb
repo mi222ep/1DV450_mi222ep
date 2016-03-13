@@ -32,17 +32,20 @@ class EventsController < ApplicationController
     return "footer: api-footer"
   end
   def new_event
+    @creator = get_creator_by_oauth
+    if(@creator.nil?)
+      response.status = 401
+      render :nothing => true
+    else
     render json: params
     @event = Event.new(event_params)
-
-    #TODO, assign creator id according to who is logged in with twitter
-
-    @event.creator_id = 2
+    @event.creator_id = @creator.id
     @event.save
+    end
   end
   def put_event
     @event = Event.find(params["eventID"])
-    @event.update(name: params["name"], about: params["about"], creator_id: params["creator_id"], position_id: params["position_id"], event_time: params["event_time"]);
+    @event.update(name: params["name"], about: params["about"], position_id: params["position_id"], event_time: params["event_time"]);
     render json: @event
   end
   def delete_event

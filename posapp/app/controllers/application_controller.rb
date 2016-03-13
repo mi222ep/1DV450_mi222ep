@@ -35,10 +35,11 @@ class ApplicationController < ActionController::Base
   end
   def get_creator_by_oauth
     auth_token = request.headers["X-auth-token"] || nil
-    user = nil
+    creator = nil
     unless auth_token.nil?
       #TODO: Test against token expiration date also
-      user = Creator.find_by_auth_token(auth_token) || nil
+      creator = Creator.find_by_auth_token(auth_token) || nil
+      return creator
     end
   end
 end
