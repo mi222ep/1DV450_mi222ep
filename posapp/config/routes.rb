@@ -36,4 +36,6 @@ Rails.application.routes.draw do
 
   delete 'apikey=:apikey/events/:eventID' => 'events#delete_event'
 
+  get '/test/' => 'sessions#test'
+
 end

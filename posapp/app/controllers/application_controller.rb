@@ -33,4 +33,12 @@ class ApplicationController < ActionController::Base
       redirect_to api_not_valid_key_path
     end
   end
+  def get_creator_by_oauth
+    auth_token = request.headers["X-auth-token"] || nil
+    user = nil
+    unless auth_token.nil?
+      #TODO: Test against token expiration date also
+      user = Creator.find_by_auth_token(auth_token) || nil
+    end
+  end
 end

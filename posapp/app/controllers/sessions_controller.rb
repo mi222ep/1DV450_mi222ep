@@ -58,4 +58,16 @@ class SessionsController < ApplicationController
     flash[:info] = "Tnx for the visit, welcome back!"
     redirect_to login_path
   end
+  def test
+    user = get_creator_by_oauth
+    if(user.nil?)
+      response.status = 401
+      render :nothing => true
+    else
+      response.status = 200
+      render :json => user
+    end
+
+
+  end
 end
