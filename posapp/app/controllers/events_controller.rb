@@ -44,16 +44,37 @@ class EventsController < ApplicationController
     end
   end
   def put_event
-    @event = Event.find(params["eventID"])
+    @creator = get_creator_by_oauth
+    if(@creator.nil?)
+      response.status = 401
+      render :json => "Not logged in"
+    else
+    @event = Event.find_by_id_and_creator_id(params["eventID"], @creator.id) || nil
+    if(@event.nil?)
+      response.status = 401
+      render :json => "Cannot find event with that ID"
+    else
     @event.update(name: params["name"], about: params["about"], position_id: params["position_id"], event_time: params["event_time"]);
     render json: @event
-  end
+    end
+    end
+    end
   def delete_event
-    @event = Event.find(params["eventID"]).destroy
-    render json: @event
+    @creator = get_creator_by_oauth
+    if(@creator.nil?)
+      response.status = 401
+      render :json => "Not logged in"
+    else
+    @event = Event.find_by_id_and_creator_id(params["eventID"], @creator.id) || nil
+    if(@event.nil?)
+      #TODO: Set response.status
+      render :json => "Cannot delete that event"
+    else
+      render json: @event
+    end
+      end
   end
   def event_params
     params.permit(:name, :about, :event_time, :position_id)
   end
-
-end
+    end
