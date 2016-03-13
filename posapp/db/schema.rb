@@ -36,11 +36,11 @@ ActiveRecord::Schema.define(version: 20160229145406) do
   end
 
   create_table "events", force: true do |t|
-    t.string   "name"
-    t.string   "about"
-    t.datetime "event_time"
-    t.integer  "creator_id"
-    t.integer  "position_id"
+    t.string   "name",        null: false
+    t.string   "about",       null: false
+    t.datetime "event_time",  null: false
+    t.integer  "creator_id",  null: false
+    t.integer  "position_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
