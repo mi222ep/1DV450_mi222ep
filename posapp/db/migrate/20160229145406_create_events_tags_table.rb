@@ -6,6 +6,7 @@ class CreateEventsTagsTable < ActiveRecord::Migration
     end
     add_index :events_tags, ["event_id", "tag_id"]
   end
+
   def down
     drop_table :events_tags
   end

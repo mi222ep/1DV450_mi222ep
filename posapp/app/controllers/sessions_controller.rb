@@ -1,14 +1,15 @@
 class SessionsController < ApplicationController
   def new
-  if is_logged_in?
-    redirect_to keys_path
-  end
+    if is_logged_in?
+      redirect_to keys_path
+    end
   end
 
   def authenticate
     session[:client_call] = params[:callback]
     redirect_to "/auth/twitter"
   end
+
   # called when a login attempt is made
 
   def create_for_api
@@ -25,7 +26,7 @@ class SessionsController < ApplicationController
     # read back the session
     url = session[:client_call]
     session[:client_call] = nil
-    redirect_to  "#{url}?auth_token=#{user.auth_token}&token_expires=#{Rack::Utils.escape(user.token_expires.to_s)}"
+    redirect_to "#{url}?auth_token=#{user.auth_token}&token_expires=#{Rack::Utils.escape(user.token_expires.to_s)}"
   end
 
   def create
@@ -58,9 +59,10 @@ class SessionsController < ApplicationController
     flash[:info] = "Tnx for the visit, welcome back!"
     redirect_to login_path
   end
+
   def test
     user = get_creator_by_oauth
-    if(user.nil?)
+    if (user.nil?)
       response.status = 401
       render :nothing => true
     else

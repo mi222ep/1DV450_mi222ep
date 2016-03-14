@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
       @limit = params[:limit].to_i
     end
     @offset ||= OFFSET
-    @limit  ||= LIMIT
+    @limit ||= LIMIT
   end
 
   private
@@ -38,9 +38,10 @@ class ApplicationController < ActionController::Base
   def require_admin_access
     if @current_user.id != 1
       flash[:info] = "You're not an admin"
-     redirect_to keys_path
+      redirect_to keys_path
     end
   end
+
   def require_valid_apikey
     apikey = request.headers["apikey"] || nil
     if Apikey.find_by_api_key(apikey)
@@ -49,6 +50,7 @@ class ApplicationController < ActionController::Base
       render json: @error, status: :unauthorized
     end
   end
+
   def get_creator_by_oauth
     auth_token = request.headers["X-auth-token"] || nil
     creator = nil
@@ -57,11 +59,12 @@ class ApplicationController < ActionController::Base
       creator = Creator.find_by_auth_token(auth_token) || nil
     end
   end
+
   def api_authenticate
     @creator = get_creator_by_oauth
     if @creator.nil?
       @error = ErrorMessage.new("You need to be logged in to do that", "Not logged in")
       render json: @error, status: :unauthorized
+    end
   end
-  end
-  end
+end

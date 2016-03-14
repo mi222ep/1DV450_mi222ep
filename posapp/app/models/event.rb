@@ -12,6 +12,7 @@ class Event < ActiveRecord::Base
     super(options)
 
   end
+
   def position_info
     position = self.position
     {
@@ -19,6 +20,7 @@ class Event < ActiveRecord::Base
         latitude: position.latitude
     }
   end
+
   def creator_info
     creator = self.creator
     {

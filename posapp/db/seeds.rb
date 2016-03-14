@@ -9,13 +9,13 @@
 User.create(name: "john_Snow", password: "4thewall", password_confirmation: "4thewall")
 User.create(name: "albin_22", password: "123456", password_confirmation: "123456")
 
-a = Apikey.create(name:"Tankekartan", api_key:"123",about:"En karta där man kan skriva ner alla olika tankar", user_id:"1")
+a = Apikey.create(name: "Tankekartan", api_key: "123", about: "En karta där man kan skriva ner alla olika tankar", user_id: "1")
 User.find(1).apikeys << a
 
-a = Apikey.create(name:"Kartappen", api_key:"123456",about:"En kartapplikation")
+a = Apikey.create(name: "Kartappen", api_key: "123456", about: "En kartapplikation")
 User.find(1).apikeys << a
 
-a = Apikey.create(name:"Appkartan", api_key:"12345",about:"En appkarta kartapp liksom")
+a = Apikey.create(name: "Appkartan", api_key: "12345", about: "En appkarta kartapp liksom")
 User.find(2).apikeys << a
 
 Creator.create(provider: "Twitter", uid: "123456", name: "Matilda")

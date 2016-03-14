@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   get '/logout' => 'sessions#destroy'
 
-  delete '/apikeys/:id/delete' =>  'apikeys#delete'
+  delete '/apikeys/:id/delete' => 'apikeys#delete'
 
   get '/admin' => 'admin#show'
   delete '/admin/:id/delete' => 'admin#delete'
@@ -27,10 +27,10 @@ Rails.application.routes.draw do
 
   get '/test/' => 'sessions#test'
 
-  get '/events/nearby' =>'events#nearby'
+  get '/events/nearby' => 'events#nearby'
 
   get '/tag/:id' => 'events#get_by_tag'
 
-  resources :events, only:[:new, :create, :index, :show, :update, :destroy]
+  resources :events, only: [:new, :create, :index, :show, :update, :destroy]
 
 end
