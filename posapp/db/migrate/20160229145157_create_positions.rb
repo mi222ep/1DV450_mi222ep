@@ -1,8 +1,8 @@
 class CreatePositions < ActiveRecord::Migration
   def change
     create_table :positions do |t|
-      t.string "longitude"
-      t.string "latitude"
+      t.float "longitude"
+      t.float "latitude"
       t.timestamps
     end
   end

@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   get '/test/' => 'sessions#test'
 
+  get '/events/nearby' =>'events#nearby'
+
   get '/tag/:id' => 'events#get_by_tag'
 
   resources :events, only:[:new, :create, :index, :show, :update, :destroy]

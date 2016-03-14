@@ -44,3 +44,5 @@ gem 'omniauth-twitter'
 
 # handling cors
 gem 'rack-cors', :require => 'rack/cors'
+
+gem 'geocoder'

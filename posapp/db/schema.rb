@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 20160229145406) do
   add_index "events_tags", ["event_id", "tag_id"], name: "index_events_tags_on_event_id_and_tag_id"
 
   create_table "positions", force: true do |t|
-    t.string   "longitude"
-    t.string   "latitude"
+    t.float    "longitude"
+    t.float    "latitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

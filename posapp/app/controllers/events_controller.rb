@@ -18,7 +18,7 @@ class EventsController < ApplicationController
     end
   end
   def index
-    events = Event.order(event_time: :dsc).limit(@limit).offset(@offset)
+    events = Event.order(event_time: :desc).limit(@limit).offset(@offset)
     nr = Event.distinct.count(:id);
     @response = {events: events, number_of_events: nr}
     respond_with(@response)
@@ -90,6 +90,20 @@ class EventsController < ApplicationController
       @error = ErrorMessage.new("Could not fint the event", "Event cant be found")
       render json: @error, status: :bad_request
     end
+  end
+  def nearby
+    # Check the parameters
+    if params["long"].present? && params["lat"].present?
+
+      @lat = params["lat"].to_f
+      @long = params["long"].to_f
+      t = Position.near([@lat, @long], 30)
+      render json: t, status: :ok
+    else
+      error = ErrorMessage.new("Could not find any resources. Bad parameters?", "Could not find any event!" )
+      render json: error, status: :bad_request # just json in this example
+    end
+
   end
   def event_params
     params.permit(:name, :about, :event_time, :position_id)
