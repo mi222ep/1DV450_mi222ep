@@ -1,4 +1,7 @@
 var map = setUpMap();
+var marker = L.marker([59.3294, 18.0686]).addTo(map);
+marker.bindPopup("Test test");
+
 function setUpMap(){
     var map = L.map('map').setView([59.3294, 18.0686], 5);
     L.tileLayer('https://api.tiles.mapbox.com/v4/jalma.oe4kdjb8/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFsbWEiLCJhIjoiY2lpNjN1d3RyMDA2bHZ3bTNmMTVhZ2RscyJ9.N-JYQ1IMDNJ3b4xIymdonA', {
