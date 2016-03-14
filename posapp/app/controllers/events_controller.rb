@@ -6,6 +6,17 @@ class EventsController < ApplicationController
   require 'errorMessage.rb'
   respond_to :json
 
+  def get_by_tag
+    @tag = Tag.find_by_id(params["id"]) || nil
+    if @tag.nil?
+      @error = ErrorMessage.new("Could not find that resource. Are you using the right tag_id?", "The Tag was not found!" )
+      render json:  @error, status: :not_found
+    else
+      @events = @tag.events
+      @response = {tag: @tag, events_with_tag: @events}
+      render json: @response
+    end
+  end
   def index
     events = Event.order(event_time: :dsc).limit(@limit).offset(@offset)
     nr = Event.distinct.count(:id);
