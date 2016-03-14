@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  require 'errorMessage.rb'
+
   include SessionsHelper
   protect_from_forgery with: :exception
 
@@ -45,7 +45,8 @@ class ApplicationController < ActionController::Base
     apikey = request.headers["apikey"] || nil
     if Apikey.find_by_api_key(apikey)
     else
-      respond_with("Not valid api key")
+      @error = ErrorMessage.new("Not valid api key", "Unvalid api key")
+      render json: @error, status: :unauthorized
     end
   end
   def get_creator_by_oauth
@@ -56,4 +57,11 @@ class ApplicationController < ActionController::Base
       creator = Creator.find_by_auth_token(auth_token) || nil
     end
   end
-end
+  def api_authenticate
+    @creator = get_creator_by_oauth
+    if @creator.nil?
+      @error = ErrorMessage.new("You need to be logged in to do that", "Not logged in")
+      render json: @error, status: :unauthorized
+  end
+  end
+  end
