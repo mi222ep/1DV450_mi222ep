@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get "/" => 'sessions#new', as: :login
   post "/" => "sessions#create"
 
@@ -22,20 +23,10 @@ Rails.application.routes.draw do
 
   get '/auth/twitter/callback' => 'sessions#create_for_api'
 
-  get '/events' => 'events#index'
-
-  get '/events/:eventID' =>'events#get_single_event'
-
-  get '/events/offset=:offset/limit=:limit' => 'events#get_offset_and_limit'
-
   get '/notvalidapikey' => 'message#not_valid_key', as: :api_not_valid_key
 
-  post'/events' => 'events#new_event'
-
-  put 'events/:eventID' => 'events#put_event'
-
-  delete 'events/:eventID' => 'events#delete_event'
-
   get '/test/' => 'sessions#test'
+
+  resources :events, only:[:new, :create, :index, :show, :update, :destroy]
 
 end
