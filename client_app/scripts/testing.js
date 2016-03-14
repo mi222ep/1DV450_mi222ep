@@ -10,7 +10,6 @@ app.controller('myCtrl', function($scope, $http) {
     };
     $http.get('http://localhost:3000/events/', config).success(function($data){
         console.log($data);
-        console.log("Sucess");
         $scope.info = $data;
     })
 });
