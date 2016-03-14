@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   respond_to :json
 
   def index
-    events = Event.limit(@limit).offset(@offset)
+    events = Event.order(event_time: :dsc).limit(@limit).offset(@offset)
     nr = Event.distinct.count(:id);
     @response = {events: events, number_of_events: nr}
     respond_with(@response)
@@ -29,6 +29,10 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.creator_id = @creator.id
     if @event.save
+      if params["tag"]
+        @tag = Tag.find_by_name(params["tag"]) || Tag.new(name: params["tag"])
+        @event.tags << @tag
+      end
       respond_with(@event)
     else
       error = ErrorMessage.new("Could not create the resource. Bad parameters?", "Could not create the resource!" )
@@ -57,23 +61,24 @@ class EventsController < ApplicationController
     end
   end
   def destroy
-    @creator = get_creator_by_oauth
-    if(@creator.nil?)
-      response.status = 401
-      render :json => "Not logged in"
-    else
-    @event = Event.find_by_id_and_creator_id(params["id"], @creator.id) || nil
-    if(@event.nil?)
-      error = ErrorMessage.new("Could not find that event", "Event could not be found" )
-    respond_with error, status: :not_found
-      if @event.delete
-        respond_with(@event)
+    if Event.find_by_id(params["id"])
+      @event = Event.find_by_id_and_creator_id(params["id"], @creator.id) || nil
+      if @event.nil?
+        @error = ErrorMessage.new("Could not find that event", "Event could not be found" )
+        render json: @error, status: :not_found
       else
-        error = ErrorMessage.new("You don't have the authority to delete that event", "Event cant be deleted")
-        respond_with error, status: :unauthorized
+        if @event.destroy
+          @response = {removed_event: @event}
+          render json: @event
+        else
+          @error = ErrorMessage.new("You don't have the authority to delete that event", "Event cant be deleted")
+          render json: @error, status: :unauthorized
+        end
       end
+    else
+      @error = ErrorMessage.new("Could not fint the event", "Event cant be found")
+      render json: @error, status: :bad_request
     end
-      end
   end
   def event_params
     params.permit(:name, :about, :event_time, :position_id)

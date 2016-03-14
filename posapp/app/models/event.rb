@@ -6,9 +6,9 @@ class Event < ActiveRecord::Base
   def serializable_hash (options={})
     options = {
         only: [:id, :name, :about, :event_time],
-        include: [position: {only: [:longitude, :latitude]}],
-        include: [tags: {only: [:name, :id]}],
-        include: [creator: {only: [:name]}]
+        #include: [position: {only: [:longitude, :latitude]}],
+        include: [tags: {only: [:name, :id]}]
+        #include: [creator: {only: [:name]}]
 
     }.update(options)
     super(options)
