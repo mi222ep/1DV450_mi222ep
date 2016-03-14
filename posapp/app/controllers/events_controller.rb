@@ -1,13 +1,17 @@
 class EventsController < ApplicationController
 
   protect_from_forgery
-  before_action :require_valid_apikey
+  before_action :require_valid_apikey, :offset_params, only: [:index]
 
   respond_to :json
 
   def index
-    @events = Event.all
-    respond_with(@events)
+    events = Event.limit(@limit).offset(@offset)
+
+    nr = Event.distinct.count(:id);
+    @response = {events: events, number_of_events: nr}
+
+    respond_with(@response)
   end
   def show
     @event = Event.find_by_id(params['id'])
