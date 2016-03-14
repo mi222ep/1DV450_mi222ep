@@ -3,9 +3,11 @@ class EventsController < ApplicationController
   protect_from_forgery
   before_action :require_valid_apikey
 
+  respond_to :json
+
   def index
-    @events = Event.select('events.name, about, longitude, event_time, latitude, creators.name AS "created-by"').joins(:position, :creator).order(event_time: :asc).all
-    render :json => @events
+    @events = Event.all
+    respond_with(@events, status: :ok)
   end
 
   def get_single_event
@@ -53,7 +55,7 @@ class EventsController < ApplicationController
       render :json => "Cannot find event with that ID"
     else
     @event.update(name: params["name"], about: params["about"], position_id: params["position_id"], event_time: params["event_time"]);
-    render json: @event
+    respond_with(@event)
     end
     end
     end
