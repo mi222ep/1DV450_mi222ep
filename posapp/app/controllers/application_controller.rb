@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
     apikey = request.headers["apikey"] || nil
     if Apikey.find_by_api_key(apikey)
     else
-      redirect_to api_not_valid_key_path
+      respond_with("Not valid api key")
     end
   end
   def get_creator_by_oauth
