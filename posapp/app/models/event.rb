@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
     options = {
         only: [:id, :name, :about, :event_time],
         include: [tags: {only: [:name, :id]}],
-        methods: [:position_info, :creator_info]
+        methods: [:position_info, :creator_info, :links]
     }.update(options)
     super(options)
 
@@ -25,6 +25,13 @@ class Event < ActiveRecord::Base
     creator = self.creator
     {
         name: creator.name
+    }
+  end
+  def links
+    event = self
+    {
+        rel: "self",
+        href: "http:localhost:3000/events/" + event.id.to_s
     }
   end
 
