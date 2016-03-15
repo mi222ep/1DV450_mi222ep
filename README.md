@@ -1,10 +1,23 @@
 # 1DV450_mi222ep
 Repository for the course "Webbramverk" at Linnéuniversitetet
+#Api
+## To get the application up and running:
+* Download the project repository
+* Open a console application and navigate to the project root
+* Run the command 'bundle install' to install all gems and bundles
+* Run the command 'rake db:setup' to setup the database and seed it
+* If you can se the registration application at (localhost:3000)[localhost:3000], the servers are up and you are ready to use the api!
 
-After many late hours I gave up installing on the server. Might fix it this weekend. Unfortunately I think you have to download ut and run locally.
-Hopefully I manage to fix it during this weekend. If so, the application is published at http://37.139.21.153/tasks
+## Testing by postman
+All postman
 
-If you know anything about why I might get a 504 gateway timeout error, I happily accept all help I can get
-At least the code is working and that is the most important, right?
+#Registration application
+##To get the application up and running:
+* Download the project repository
+* Open a console application and navigate to the project root
+* Run the command 'bundle install' to install all gems and bundles
+* Run the command 'rake db:setup' to setup the database and seed it
+* Run the command 'rails s' to start the server
+* You should now be able to reach the application at localhost:3000
 
 The admin is hard coded now as user with ID number 1. His username is "john_Snow" and password "4thewall" if you use the seed files. If not, admin will be the first user created. 
