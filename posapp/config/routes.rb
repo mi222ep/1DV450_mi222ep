@@ -34,5 +34,6 @@ Rails.application.routes.draw do
   resources :events, only: [:new, :create, :index, :show, :update, :destroy]
 
   get '/events/searchbyname/:name' => 'events#event_by_name'
+  get '/logout-api' => 'sessions#destroy_api_auth'
 
 end

@@ -69,7 +69,9 @@ class SessionsController < ApplicationController
       response.status = 200
       render :json => user
     end
-
-
+  end
+  def destroy_api_auth
+    destroy_api_authenticate
+    render json: "You have logged out from the api"
   end
 end
