@@ -111,6 +111,16 @@ class EventsController < ApplicationController
     end
 
   end
+  def event_by_name
+    @name = params['name']
+    @events = Event.where("name LIKE '%" + @name +"%'")
+    if @events.length == 0
+      error = ErrorMessage.new("Could not find any event containing that name", "No event was found")
+      render json: error, status: :bad_request
+    else
+      render json: @events
+    end
+  end
 
   def event_params
     params.permit(:name, :about, :event_time, :position_id)
