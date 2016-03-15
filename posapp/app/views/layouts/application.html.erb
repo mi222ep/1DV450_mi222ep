@@ -10,31 +10,33 @@
 <div class="page-header">
   <h2>Api keys get</h2>
   <nav role="navigation" class="navbar navbar-default">
-  <div class="navbar-header">
-    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-  </div>
+    <div class="navbar-header">
+      <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
 
-  <div id="navbarCollapse" class="collapse navbar-collapse">
-    <ul class="nav navbar-nav">
-      <li class="/"><a href="#">Home</a></li>
-      <li><a href="/showallkeys">Apikeys</a></li>
-      <li><a href="admin">Admin</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><% if @current_user %>Logged in as <%= @current_user.name%>
-          <li><a href="/logout">Logout</a></li>
-      <% else %> Not logged in<% end %> </li>
-    </ul>
-  </div>
-</nav></div>
+    <div id="navbarCollapse" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="/"><a href="#">Home</a></li>
+        <li><a href="/showallkeys">Apikeys</a></li>
+        <% if @current_user && @current_user.id == 1 %>
+            <li><a href="admin">Admin</a></li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><% if @current_user %>Logged in as <%= @current_user.name%>
+            <li><a href="/logout">Logout</a></li>
+        <% else %> Not logged in<% end %> </li>
+      </ul>
+    </div>
+  </nav></div>
 <div class="container">
 
-<%= yield %>
+  <%= yield %>
 </div>
 </body>
 </html>
