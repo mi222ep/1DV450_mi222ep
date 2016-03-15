@@ -9,7 +9,8 @@ Repository for the course "Webbramverk" at Linnéuniversitetet
 * If you can se the registration application at localhost:3000, the servers are up and you are ready to use the api!
 
 ## Testing by postman
-The api has preset postman tests, that can be found here. Some of the tests require a valid api authentication token. To accuire this you must sign in with twitter. Navigate to localhost:3000/authenticate to be redirected to a twitter verification page. Accept the application and sign in using twitter.
+The api has preset postman tests, that can be found here in the root catalog of the repository. Import these tests in postman.
+Some of the tests require a valid api authentication token. To accuire this you must sign in with twitter. Navigate to localhost:3000/authenticate to be redirected to a twitter verification page. Accept the application and sign in using twitter.
 After log in you will be redirected to the start page of the registration application. In the query string you now have the auth_token value.
 Copy the value of auth_token and replace the header value of "X-auth-token" to the auth_token value.
 All tests should now be runnable. 
